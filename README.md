@@ -3,7 +3,7 @@
 -------
 OVERVIEW
 
-The Bezel Project Bezel Utility menu.
+The Bezel Project Bezel Utility menu. ADAPTADO PARA EMULOS FOR THE ... "RETROSELECT TEAM"
 
 This utility will provide a downloader for Retroarach system bezel packs to be used for various systems within RetroPie.
 
