@@ -21,6 +21,7 @@ function main_menu() {
             3 "Disable system bezel pack" \
             4 "Information:  Retroarch cores setup for bezels per system" \
             5 "Uninstall the bezel project completely" \
+			6 "Reparar permisos en RetroArch _ new" \
             2>&1 > /dev/tty)
 
         case "$choice" in
@@ -29,9 +30,19 @@ function main_menu() {
             3) disable_bezel  ;;
             4) retroarch_bezelinfo  ;;
             5) removebezelproject  ;;
+			6) repara_permisos  ;;
             *)  break ;;
         esac
     done
+}
+
+#########################################################
+# Functions for repair permissions bezel packs #
+#########################################################
+
+function repara_permisos() {
+sudo chown -R pi:pi /opt/emulos/
+
 }
 
 #########################################################
@@ -109,7 +120,7 @@ hide_bezel gbc
 
 rm -rf /opt/emulos/configs/all/retroarch/overlay/GameBezels
 rm -rf /opt/emulos/configs/all/retroarch/overlay/ArcadeBezels
-rm /home/pi/EmulOS/emulosmenu/bezelproject.sh
+# rm /home/pi/EmulOS/emulosmenu/bezelproject.sh
 
 }
 
@@ -170,17 +181,17 @@ function download_bezel() {
         default="$choice"
         [[ -z "$choice" ]] && break
         case "$choice" in
-            U)  #update install script to get new theme listings
-                if [[ -d "/home/pigaming" ]]; then
-                    cd "/home/pigaming/EmulOS/emulosmenu"
-                else
-                    cd "/home/pi/EmulOS/emulosmenu" 
-                fi
-                mv "bezelproject.sh" "bezelproject.sh.bkp" 
-                wget "https://raw.githubusercontent.com/DOCK-PI3/BezelProject/master/bezelproject.sh" 
-                chmod 777 "bezelproject.sh" 
-                exit
-                ;;
+            # U)  #update install script to get new theme listings
+                # if [[ -d "/home/pigaming" ]]; then
+                    # cd "/home/pigaming/EmulOS/emulosmenu"
+                # else
+                    # cd "/home/pi/EmulOS/emulosmenu" 
+                # fi
+                # mv "bezelproject.sh" "bezelproject.sh.bkp" 
+                # wget "https://raw.githubusercontent.com/DOCK-PI3/BezelProject/master/bezelproject.sh" 
+                # chmod 777 "bezelproject.sh" 
+                # exit
+                # ;;
             *)  #install or update themes
                 theme=(${themes[choice-1]})
                 repo="${theme[0]}"
